@@ -21,5 +21,5 @@ This program is designed to to convert the binary code 0100000001111110101110010
 -Install NumPy. This can be done by typing "pip install numpy" into the terminal.
 
 -Into the command line type
-"python 
+"python assignment_1.py", then hit ENTER to run.
 
