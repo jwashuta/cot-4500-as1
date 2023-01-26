@@ -95,44 +95,47 @@ def bisection(a: int, b: int, tolerance: float):
     equation = (x - z) / (math.log(2,10))
     print(math.ceil(equation))
 
+#Part B(Newton Raphson Method)
 
-#def question_6():
-    #def f(x):
-       # return x**3 + 4(x**2) - 10
-    #def f_prime(x):
-        #return 3(x**2) + 8*x
-    #def my_bisection(f, a, b, tol):
-        #m = (a + b) / 2
-    #if np.abs(f(m)) < tol:
-       #return m
-    #elif np.sign(f(a)) == np.sign(f(m)):
-       #return my_bisection(f, m, b, tol)
-       #return my_bisection(f, m, b, tol) 
+def newton_raphson(f,f_prime, initial_value, tolerance):
+    answer = f(initial_value) / f_prime(initial_value)
+    x = initial_value
+    iteration_count = 1
 
-#def my_newton(f, df, x0, tol):
+    while(abs(answer) >= tolerance):
+        x = x - answer 
+        iteration_count += 1
+        answer = f(x) / f_prime(x)
+    return iteration_count
 
-   # if abs(f(x0)) < tol:
-        #return x0
-    #else: None
 
-#print(my_bisection(f, -4, 7, .0001))
-#print(my_newton(f, -4, 7, .0001))
 
 
 if __name__ == "__main__":
+    
     # Question 1-4:
+    
     double_precision()
+    
     #Question 5
+    
     error()
+    
     print("\n")
-    #Question 6
+    
+    #Question 6 Parts 1 and 2
+    
     #Bisection Part (1)
     a = -2
     b = 5
     tolerance: float = 10**-4
     bisection(a, b, tolerance)
+    print("\n")
 
-
-    #print(newton_raphson(initial_approximation, tolerance, sequence))
-
+    #Newton Raphson Part(2)
+    initial_value: float = 7
+    tolerance: float = .0001
+    f = lambda x : (x**3) + (4*(x**2)) - 10
+    f_prime = lambda x : (3*(x**2)) + 8*x
+    print(newton_raphson(f, f_prime, initial_value, tolerance))  
 
