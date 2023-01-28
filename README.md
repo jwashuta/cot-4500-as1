@@ -16,8 +16,8 @@ This program is designed to to convert the binary code 0100000001111110101110010
 
 ## Setup/Installation
 ##### Imports
--import math, codeop, NumPy, and decimal
-  Type the imports to get certain packages for this program.
+-import math, codeop, NumPy, and decimal.
+
 ##### Other requirements
 -Create requirements.txt. This can be done by typing "pip freeze >requirements.txt" into the terminal.
 
