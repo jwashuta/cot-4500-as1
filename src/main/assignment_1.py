@@ -1,6 +1,7 @@
 import codeop
 import numpy as np
 import math
+import decimal
 
 # Question 1: Use double precision, calculate the resulting values (format to 5 decimal places)
 #       a) 0 | 10000000111 |pip 1110101110010000000000000000000000000000000000000000
@@ -35,29 +36,28 @@ def double_precision():
 # formula for converting binary to decimal (n)
     
     n = ((-1)**s)*(2**(c - 1023))*(1 + f)
-    print(f"{n:.5f}")
+    print(f"{n:.4f}")
     print("\n")
 
 # Question 2: Repeat question 1 using three-digit chopping arithmetic
 
     new_n = n
-    new_n = n * (10**-3)
-    print((math.floor(new_n*1000))/1000)
+    print(float(math.floor(new_n)))
     print("\n")
 
 # Question 3: Repeat question 1 using three-digit rounding arithmetic
 
     new_n = new_n + 0.0005
-    print(round(new_n, ndigits = 3))
+    print(float(round(new_n)))
     print("\n")
 
 # Question 4: Compute the absolute and relative error with the exact value form question 1 and its 3 digit rounding
 
     def absolute_error(x, xbar):
-        return abs(x-xbar)
+        return abs(decimal.Decimal(x)-decimal.Decimal(xbar))
 
     def relative_error(x, xbar):
-        return 0 if x == 0 else absolute_error(x, xbar) / abs(x)
+        return 0 if x == 0 else absolute_error(x, xbar) / decimal.Decimal(abs(x))
     
     def abs_rel_error():
         number = 491.5625
@@ -138,4 +138,3 @@ if __name__ == "__main__":
     f = lambda x : (x**3) + (4*(x**2)) - 10
     f_prime = lambda x : (3*(x**2)) + 8*x
     print(newton_raphson(f, f_prime, initial_value, tolerance))  
-
